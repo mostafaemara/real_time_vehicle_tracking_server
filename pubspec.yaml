@@ -10,6 +10,7 @@ dependencies:
   dart_frog: ^0.3.0
   dart_frog_web_socket: ^0.1.0-dev.1
   web_socket_channel: ^2.2.0
+  gpx: ^2.2.1
 
 dev_dependencies:
   mocktail: ^0.3.0
