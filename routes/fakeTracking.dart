@@ -15,7 +15,7 @@ late List<Route> routes;
 Future<Response> onRequest(RequestContext context) async {
   await initRoutes();
   final handler = webSocketHandler((channel, protocol) async {
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(milliseconds: 500), (timer) {
       final currentLocations = updateRoutes();
       final encodedLocations = encodeLocations(currentLocations);
       channel.sink.add(
