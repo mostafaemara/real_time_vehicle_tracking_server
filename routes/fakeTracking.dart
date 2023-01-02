@@ -19,7 +19,6 @@ Future<Response> onRequest(RequestContext context) async {
       timer!.cancel();
     }
     timer = Timer.periodic(const Duration(milliseconds: 350), (timer) {
-      print(timer.runtimeType.toString());
       final currentLocations = updateRoutes();
       final encodedLocations = encodeLocations(currentLocations);
       channel.sink.add(
