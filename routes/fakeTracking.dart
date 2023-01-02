@@ -11,11 +11,15 @@ import '../location.dart';
 import '../route.dart';
 
 late List<Route> routes;
-
+Timer? timer;
 Future<Response> onRequest(RequestContext context) async {
   await initRoutes();
   final handler = webSocketHandler((channel, protocol) async {
-    Timer.periodic(const Duration(milliseconds: 500), (timer) {
+    if (timer != null) {
+      timer!.cancel();
+    }
+    timer = Timer.periodic(const Duration(milliseconds: 350), (timer) {
+      print(timer.runtimeType.toString());
       final currentLocations = updateRoutes();
       final encodedLocations = encodeLocations(currentLocations);
       channel.sink.add(
